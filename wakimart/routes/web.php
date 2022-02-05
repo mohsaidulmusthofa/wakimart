@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,4 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('dashboard', [AdminController::class, 'index'])->name('vdashboard');
+
+
+/*
+| -----------
+| ROUTE USER
+| -----------
+*/
+// route view page data user
+Route::get('user', [UserController::class, 'index'])->name('vuser');
+// route view page add user
+Route::get('user/tambah', [UserController::class, 'create'])->name('vadduser');
+// route add user
+Route::post('user/tambah', [UserController::class, 'store'])->name('store.user');
+// route view page edit user
+Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('vedituser');
+// route update user
+Route::post('user/edit/{id}', [UserController::class, 'update'])->name('update.user');
+// route delete user
+Route::get('user/delete/{id}', [UserController::class, 'destroy'])->name('delete.user');
